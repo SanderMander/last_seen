@@ -8,21 +8,38 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'last_seen'
+gem 'last_seen', git: 'https://github.com/SanderMander/last_seen'
 ```
 
 And then execute:
 ```bash
 $ bundle
 ```
+Then install migrations:
 
-Or install it yourself as:
 ```bash
-$ gem install last_seen
+$ rails last_seen:install:migrations
+```
+and execute them
+
+```bash
+$ rails db:migrate
+```
+Mount engine to your config/routes.rb:
+
+```ruby
+mount LastSeen::Engine => "/last_seen"
 ```
 
-## Contributing
-Contribution directions go here.
+Start rails server:
 
+```bash
+$ rails s
+```
+Activities statistics available at:
+
+```text
+/last_seen/activities
+```
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

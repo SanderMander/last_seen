@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User email</th>
+      <th>First seen at</th>
+      <th>Last seen at</th>
+      <th>Still active</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.user.email %></td>
+        <td><%= activity.created_at %></td>
+        <td><%= activity.updated_at %></td>
+        <td><%= activity.archived? ? 'No' : 'Yes' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
